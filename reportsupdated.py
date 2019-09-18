@@ -1,5 +1,5 @@
 import sqlite3
-#using lamda - factory functions! the "rightway"
+#using lamda - factory functions! the "right way"
 
 class Student():
 
@@ -48,6 +48,7 @@ class StudentExerciseReports():
 
         for student in all_students:
             print(student)
+
 
 
 reports = StudentExerciseReports()

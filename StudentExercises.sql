@@ -107,6 +107,7 @@ CREATE TABLE StudentExercises (
 	Id	   	  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	StudentId INTEGER NOT NULL,
 	ExerciseId INTEGER NOT NULL,
+	InstructorId INTEGER NOT NULL,
 	FOREIGN KEY(StudentId) REFERENCES Student(Id),
 	FOREIGN KEY(ExerciseId) REFERENCES Exercise(Id)
 	);
@@ -114,19 +115,55 @@ CREATE TABLE StudentExercises (
 Drop Table StudentExercises;
 
 
-INSERT INTO StudentExercises (StudentId, ExerciseId)
+INSERT INTO StudentExercises (StudentId, ExerciseId, InstructorId)
 VALUES 
-(1, 1),
-(1, 2),
-(2, 2),
-(2, 3),
-(3, 4),
-(3, 5),
-(4, 1),
-(4, 2),
-(5, 2),
-(5, 1),
-(6, 3),
-(6, 4),
-(7, 1),
-(7, 3);
+(1, 1, 1),
+(1, 2, 2),
+(2, 2, 3),
+(2, 3, 1),
+(3, 4, 2),
+(3, 5, 3),
+(4, 1, 1),
+(4, 2, 2),
+(5, 2, 3),
+(5, 1, 1),
+(6, 3, 2),
+(6, 4, 3),
+(7, 1, 1),
+(7, 3, 2);
+
+
+select
+	e.Id ExerciseId,
+	e.Name,
+	s.Id,
+	s.FirstName,
+	s.LastName
+from Exercise e
+join StudentExercises se on se.ExerciseId = e.Id
+join Student s on s.Id = se.StudentId
+
+
+
+select
+     e.Id ExerciseId,
+     e.Name,
+     s.Id,
+     s.FirstName,
+     s.LastName
+from Exercise e
+join StudentExercises se on se.ExerciseId = e.Id
+join Student s on s.Id = se.StudentId
+
+
+select
+     e.Id ExerciseId,
+     e.Name,
+     i.Id,
+     i.FirstName,
+     i.LastName
+from Exercise e
+join StudentExercises se on se.ExerciseId = i.Id
+join Instructor i on i.Id = se.StudentId
+
+

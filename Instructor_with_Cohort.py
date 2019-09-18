@@ -12,16 +12,12 @@ class Instructor():
     def __repr__(self):
         return f'{self.first_name} {self.last_name} teaches {self.cohort}.'
 
-class InstructorReports():
-
-    """Methods for reports on the Student Exercises database"""
+class InstructorReports:
 
     def __init__(self):
         self.db_path = "/Users/kgallegos/workspace/python/sql/StudentExercises/studentexercises.db"
 
     def all_instructors(self):
-
-        """Retrieve all students with the cohort name"""
 
         with sqlite3.connect(self.db_path) as conn:
             conn.row_factory = lambda cursor, row: Instructor(
@@ -46,8 +42,11 @@ class InstructorReports():
 
 
 
-        for instructor in all_instructors:
-            print(instructor)
+        # for instructor in all_instructors:
+        #     print(instructor)
+
+        print("\nInstructor: \n")
+        [print(f'  * {i}') for i in all_instructors]
 
 
 instructor_reports = InstructorReports()

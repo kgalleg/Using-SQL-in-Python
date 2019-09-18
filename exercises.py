@@ -23,7 +23,7 @@ class ExerciseNames():
     def __init__(self):
         self.db_path = "/Users/kgallegos/workspace/python/sql/StudentExercises/studentexercises.db"
 
-    def all_python_exercises(self):
+    def all_exercises(self):
 
         """Retrieve all students with the cohort name"""
 
@@ -39,17 +39,18 @@ class ExerciseNames():
             from Exercise e
             """)
 
-            all_python_exercises = db_cursor.fetchall()
+            all_exercises = db_cursor.fetchall()
 
 
 
-        for exercise in all_python_exercises:
+        for exercise in all_exercises:
             print(exercise)
 
 
 
 list_of_exercises = ExerciseNames()
-list_of_exercises.all_python_exercises()
+list_of_exercises.all_exercises()
+
 
 
 
